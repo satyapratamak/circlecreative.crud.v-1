@@ -14,10 +14,9 @@ use App\Http\Controllers\CRUDKaryawanController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
 
 Route::get('/', [CRUDKaryawanController::class, 'index']);
+Route::get('/read', [CRUDKaryawanController::class, 'read']);
 Route::get('/create', [CRUDKaryawanController::class, 'create']);
 Route::post('/store', [CRUDKaryawanController::class, 'store']);

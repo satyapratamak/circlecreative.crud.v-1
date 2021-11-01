@@ -20,7 +20,7 @@
             
                 <h1> CRUD Karyawan </h1>
                 <button class="btn btn-primary" id="btnTambahKaryawan">Tambah Karyawan </button>
-
+                <div id="read" class="mt-3"></div>
 
             </div>
         </div>
@@ -28,43 +28,21 @@
 
     <!-- Modal 1-->
     <div class="modal fade" id="modalKaryawan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalKaryawanLabel"></h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div id="page">
-
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalKaryawanLabel"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div id="page">              
+                    
+                </div>
                 
-               
-                
             </div>
-            
         </div>
-    </div>
     </div>
     <!--- End Modal 1--->
 
-    <!-- Modal 2-->
-    <!--div class="modal fade" id="modalKaryawan" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-            
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-        </div>
-    </div-->
-    <!--End Modal 2-->
     
     <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
@@ -85,16 +63,18 @@ crossorigin="anonymous">
         </script>
     
     <script>
-        // $(document).ready(function(){
+
+        $(document).ready(function(){
+            read();
             
+        });
+        function read(){
+            $.get("{{ url('read') }}", {}, function(data, status){
 
-        // });
-
-        // function create(){
-
-        //     $("#modalKaryawan").modal("show");
-        // }
-
+                $("#read").html(data);
+            });
+        }
+        
         $("#btnTambahKaryawan").click(function(event){
             event.preventDefault();
             $.get("{{ url('create') }}", {}, function(data, status){
@@ -104,10 +84,9 @@ crossorigin="anonymous">
 
             });           
         });
+        
 
-        function store(){
-
-        }
+        
 
         
         
