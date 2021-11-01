@@ -19,7 +19,7 @@
             <td> {{ $item->email }}</td>
             <td> {{ $item->hp }}</td>
             <td> {{ $item->departement }}</td>
-            <td> <button class="btn btn-warning" onclick="#"> EDIT </button>
+            <td> <button id="btnEditKaryawan" class="btn btn-warning" onclick="show({{ $item->id }})"> EDIT </button>
                 <button class="btn btn-danger" onclick="#"> DELETE </button>
             </td>
 
@@ -27,3 +27,4 @@
         
     @endforeach
 </table>
+

@@ -20,3 +20,5 @@ Route::get('/', [CRUDKaryawanController::class, 'index']);
 Route::get('/read', [CRUDKaryawanController::class, 'read']);
 Route::get('/create', [CRUDKaryawanController::class, 'create']);
 Route::post('/store', [CRUDKaryawanController::class, 'store']);
+Route::post('/update/{id}', [CRUDKaryawanController::class, 'update']);
+Route::get('/show/{id}', [CRUDKaryawanController::class, 'show']);

@@ -7,7 +7,7 @@
          <div class="mb-3">
              <label for="birth_place" class="col-form-label">Tempat Lahir :</label>
              <input type="text" class="form-control" id="birth_place" name="birth_place">
- </div>
+        </div>
          <div class="mb-3">
              <label for="birth_date" class="col-form-label">Tanggal Lahir :</label>
              <input type="text" class="form-control" id="birth_date" name="birth_date">

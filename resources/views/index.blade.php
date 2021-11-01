@@ -74,6 +74,56 @@ crossorigin="anonymous">
                 $("#read").html(data);
             });
         }
+
+        function show(id){
+            $.get("{{ url('show') }}/"+id, {}, function(data, status){
+
+                $("#modalKaryawanLabel").html("Edit Karyawan");
+                $("#page").html(data);
+                $("#modalKaryawan").modal("show");
+            });
+        }
+
+        function update(id){
+
+            let full_name = $("#full_name").val();
+            let birth_place = $("#birth_place").val();
+            let birth_date = $("#birth_date").val();
+            let email = $("#email").val();
+            let hp = $("#hp").val();
+            let departement = $("#departement").val();
+            //alert(full_name);
+            $.ajax({
+                url: "{{ url('update') }}/"+id,
+                type:"post",
+                
+                data:{
+                full_name:full_name,
+                email:email,
+                hp:hp,
+                birth_place:birth_place,
+                birth_date:birth_date,
+                departement:departement,                
+                },
+                success:function(response){
+                
+                console.log(response);
+                $(".btn-close").click();
+                read();
+                if(response) {
+                    $('.success').text(response.success);
+                    $("#ajaxform")[0].reset();                   
+                    
+                }
+                },
+                error: function(error) {
+                console.log(error);                
+                }
+                //
+            });
+            // $("#modalKaryawan").modal("hide");
+            // read();
+        }
         
         $("#btnTambahKaryawan").click(function(event){
             event.preventDefault();
