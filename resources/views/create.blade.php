@@ -1,8 +1,8 @@
 <div class="modal-body">
-    <form>
+    <form id="ajaxform">
          <div class="mb-3">
              <label for="full_name" class="col-form-label">Nama Lengkap :</label>
-             <input type="text" class="form-control" id="full_name" name="full_name">
+             <input type="text" class="form-control" id="full_name" name="full_name" required>
          </div>
          <div class="mb-3">
              <label for="birth_place" class="col-form-label">Tempat Lahir :</label>
@@ -36,11 +36,62 @@
      <button type="button" class="btn btn-success" id="btnSaveTambahKaryawan"> SAVE </button>
  </div>
 
- <!--script> 
-$("#btnSaveTambahKaryawan").click(function(){
-            $("#modalKaryawan").modal("hide");  
-            alert("Tambah Karyawan");
-                  
-        });
+ <script> 
+    $("#btnSaveTambahKaryawan").click(function(){
 
-</script-->
+        
+
+        let full_name = $("#full_name").val();
+        let birth_place = $("#birth_place").val();
+        let birth_date = $("#birth_date").val();
+        let email = $("#email").val();
+        let hp = $("#hp").val();
+        let departement = $("#departement").val();
+    //     let birth_place = $("input[name=birth_place]").val();
+    //     let birth_date = $("input[name=birth_date]").val();
+    //   let email = $("input[name=email]").val();
+    //   let hp = $("input[name=hp]").val();
+    //   let departement = $("input[name=departement]").val();
+    //   let _token   = $('meta[name="csrf-token"]').attr('content');
+
+      
+      
+
+      $.ajax({
+        url: "{{ url('store') }}",
+        type:"post",
+        
+        data:{
+          full_name:full_name,
+          email:email,
+          hp:hp,
+          birth_place:birth_place,
+          birth_date:birth_date,
+          departement:departement,
+          
+          
+        },
+        success:function(response){
+          console.log(response);
+          if(response) {
+            $('.success').text(response.success);
+            $("#ajaxform")[0].reset();
+            
+             
+          }
+        },
+        error: function(error) {
+         console.log(error);
+         
+         //$(".btn-close").click();
+        }
+       });
+
+       $("#modalKaryawan").modal("hide");  
+
+        //$("#modalKaryawan").modal("hide");  
+        //alert("Tambah Karyawan");
+                
+    });
+
+</script>

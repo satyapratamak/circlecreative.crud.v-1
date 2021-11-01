@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\M_CRUDKaryawan;
 use Illuminate\Http\Request;
+
 
 class CRUDKaryawanController extends Controller
 {
@@ -34,7 +36,17 @@ class CRUDKaryawanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $data['full_name'] = $request->full_name;
+        // $data['birth_place'] = $request->birth_place;
+        // $data['birth_date'] = $request->birth_date;
+        // $data['hp'] = $request->hp;
+        // $data['email'] = $request->email;
+        // $data['departement'] = $request->departement;
+        $data = $request->all();
+        //$data['full_name'] = $request->full_name;
+
+
+        M_CRUDKaryawan::insert($data);
     }
 
     /**

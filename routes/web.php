@@ -20,4 +20,4 @@ use App\Http\Controllers\CRUDKaryawanController;
 
 Route::get('/', [CRUDKaryawanController::class, 'index']);
 Route::get('/create', [CRUDKaryawanController::class, 'create']);
-Route::get('/store', [CRUDKaryawanController::class, 'store']);
+Route::post('/store', [CRUDKaryawanController::class, 'store']);

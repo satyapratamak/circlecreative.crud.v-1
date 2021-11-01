@@ -8,6 +8,8 @@
 
     <!-- CSS only -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<meta name="csrf-token" content="{{ csrf_token() }}" />
+
 </head>
 <body>
   
@@ -73,6 +75,15 @@ crossorigin="anonymous">
     <!-- JQuery -->
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 
+    
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        </script>
+    
     <script>
         // $(document).ready(function(){
             
@@ -84,7 +95,8 @@ crossorigin="anonymous">
         //     $("#modalKaryawan").modal("show");
         // }
 
-        $("#btnTambahKaryawan").click(function(){
+        $("#btnTambahKaryawan").click(function(event){
+            event.preventDefault();
             $.get("{{ url('create') }}", {}, function(data, status){
                 $("#modalKaryawanLabel").html("Tambah Karyawan");
                 $("#page").html(data);
@@ -94,7 +106,7 @@ crossorigin="anonymous">
         });
 
         function store(){
-            
+
         }
 
         
