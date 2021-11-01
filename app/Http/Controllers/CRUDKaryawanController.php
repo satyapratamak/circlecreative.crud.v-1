@@ -106,6 +106,7 @@ class CRUDKaryawanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = M_CRUDKaryawan::findOrFail($id);
+        $data->delete();
     }
 }

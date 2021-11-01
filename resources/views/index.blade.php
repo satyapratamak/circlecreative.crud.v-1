@@ -92,7 +92,7 @@ crossorigin="anonymous">
             let email = $("#email").val();
             let hp = $("#hp").val();
             let departement = $("#departement").val();
-            //alert(full_name);
+            
             $.ajax({
                 url: "{{ url('update') }}/"+id,
                 type:"post",
@@ -119,11 +119,43 @@ crossorigin="anonymous">
                 error: function(error) {
                 console.log(error);                
                 }
-                //
+                
             });
-            // $("#modalKaryawan").modal("hide");
-            // read();
+            
         }
+
+        function destroy(id){
+
+            confirm("Apakah anda yakin?");
+
+            $.ajax({
+                url: "{{ url('destroy') }}/"+id,
+                type:"post",
+                
+                data:{
+                id:id,
+                                
+                },
+                success:function(response){
+                
+                console.log(response);
+                $(".btn-close").click();
+                read();
+                if(response) {
+                    $('.success').text(response.success);
+                    $("#ajaxform")[0].reset();                   
+                    
+                }
+                },
+                error: function(error) {
+                console.log(error);                
+                }
+                
+            });
+
+        }
+
+
         
         $("#btnTambahKaryawan").click(function(event){
             event.preventDefault();

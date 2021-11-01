@@ -20,7 +20,7 @@
             <td> {{ $item->hp }}</td>
             <td> {{ $item->departement }}</td>
             <td> <button id="btnEditKaryawan" class="btn btn-warning" onclick="show({{ $item->id }})"> EDIT </button>
-                <button class="btn btn-danger" onclick="#"> DELETE </button>
+                <button class="btn btn-danger" onclick="destroy({{ $item->id }})"> DELETE </button>
             </td>
 
         </tr>

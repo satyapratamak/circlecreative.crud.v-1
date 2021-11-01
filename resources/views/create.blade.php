@@ -54,6 +54,8 @@
                 },
                 success:function(response){
                 
+                $(".btn-close").click();
+                read();
                 console.log(response);
                 if(response) {
                     $('.success').text(response.success);
@@ -66,9 +68,7 @@
                 }
                 //
             });
-            $("#modalKaryawan").modal("hide");
-            read();
-
+            
 
         });
 </script>
